@@ -7,10 +7,284 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        /* Header Styles */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 5%;
+            transition: all 0.3s ease;
+        }
+          /* Navigation */
+          nav {
+            background-color:  #6c5ce7;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            margin-left: 30px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            margin-right: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #aaa;
+        }
+        
+        .nav-links a.active {
+            color: #fafbfd;
+            font-weight: 500;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-button {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: var(--accent);
+            transform: translateX(-3px);
+        }
+
+        .header-title {
+           text-align: left;
+        }
+
+        .header-title h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-title p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .header-spacer {
+            width: 60px;
+        }
+
+
+        /* Hero Section */
+        .hero-banner {
+            background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 200px 20px 150px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: #f6f5ff;
+            font-weight: 700;
+            margin-bottom: 25px;
+            animation: fadeInUp 1s ease;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin: 0 auto 40px;
+            max-width: 700px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .about-intro {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-intro .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            box-shadow:  #6c5ce7;
+        }
+
+        .about-intro h2 {
+            font-size: 2rem;
+            color:  #6c5ce7;
+            margin-bottom: 15px;
+        }
+
+        .intro-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+        }
+
+        .about-features {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .feature:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .feature-image {
+            flex: 1;
+        }
+
+        .feature-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+        }
+
+        .feature-image img:hover {
+            transform: scale(1.03);
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            color:  #6c5ce7;
+            margin-bottom: 15px;
+        }
+
+        .team-section {
+            background: #f8f9fa;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-size: 2rem;
+            color: #6c5ce7;
+            margin-bottom: 40px;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .member {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 280px;
+            transition: transform 0.3s;
+        }
+
+        .member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 2px solid #6c5ce7;
+        }
+
+        .member h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .about-intro .container,
+            .feature {
+                flex-direction: column;
+            }
+            
+            .feature:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .hero-banner {
+                padding: 100px 20px 60px;
+            }
+        }
+
         :root {
-            --primary: #0066cc;
-            --secondary: #004d99;
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
             --light: #f8f9fa;
             --dark: #212529;
         }
@@ -21,108 +295,17 @@
             padding: 0;
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
-        .sub-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 100px 20px 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .sub-header::after {
-            content: '';
-            position: absolute;
-            bottom: -50px;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: white;
-            transform: skewY(-3deg);
-            z-index: 1;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-
-        
-        .nav-links {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 250px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            z-index: 1001;
-            padding: 80px 30px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links.active {
-            display: block;
-        }
-        
-        .nav-links ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .nav-links li {
-            margin: 20px 0;
-        }
-        
-        .nav-links a {
-            color: var(--dark);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            padding: 8px 15px;
-            border-radius: 4px;
-        }
-        
-        .nav-links a:hover {
-            color: white !important;
-            background: var(--primary);
-        }
-        
-        .fa-times, .fa-bars {
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
-        
-        .fa-bars {
-            display: block;
-        }
-        
-        .fa-times {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-        }
+        /* Removed nav styles since header is removed */
         
         h1 {
             font-size: 2.5rem;
             margin: 0;
             position: relative;
             z-index: 2;
+            animation: fadeInUp 1s ease;
         }
         
         .about-us {
@@ -160,11 +343,12 @@
             width: 100%;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: all 0.5s ease;
         }
         
         .about-col img:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         
         .hero-btn {
@@ -177,6 +361,8 @@
             font-weight: 600;
             transition: all 0.3s;
             border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
         }
         
         .hero-btn:hover {
@@ -184,23 +370,57 @@
             color: var(--primary);
         }
         
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.5s;
+        }
+        
+        .hero-btn:hover::before {
+            left: 100%;
+        }
+        
         .footer {
             background: var(--dark);
             color: white;
-            padding: 60px 5%;
+            padding: 40px 5%;
             text-align: center;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: white;
+            transform: skewY(-2deg);
+            z-index: 1;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 2;
         }
         
         .footer h4 {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
         }
         
         .footer p {
             color: #ddd;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
         
         .icons {
@@ -213,121 +433,157 @@
         .icons a {
             color: white;
             font-size: 1.2rem;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
         }
         
         .icons a:hover {
             color: var(--primary);
+            background: white;
+            transform: translateY(-5px);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-                position: static;
-                width: auto;
-                height: auto;
-                background: transparent;
-                box-shadow: none;
-                padding: 0;
-            }
-            
-            .nav-links ul {
-                display: flex;
-                gap: 30px;
-            }
-            
-            .fa-bars {
-                display: none;
-            }
-            
-            .fa-times {
-                display: none;
-            }
-            
-            nav {
-                padding: 20px 5%;
-                background: transparent;
-                box-shadow: none;
-            }
-            
-            nav a {
-                color: white;
-            }
-            
-            .fa-bars {
-                color: white;
-            }
+            /* Removed nav styles since header is removed */
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <section class="sub-header">
-        <nav>
-            <a href="index.html" style="color: white; font-weight: 600; font-size: 1.2rem;">KS Coloring</a>
+      <!-- Navigation -->
+      <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">KS Coloring</a>
             <div class="nav-links" id="navLinks">
-                <i class="fas fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="product.html">PRODUCT</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                </ul>
+                <a href="index.html">Home</a>
+                <a href="product.html">Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active">Contact</a>
             </div>
-            <i class="fas fa-bars" onclick="showMenu()"></i>
-        </nav>
-        <h1>About Us</h1>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Banner -->
+    <section class="hero-banner" data-aos="fade">
+        <div class="hero-content">
+            <h1>Our Story</h1>
+            <p>Discover the passion behind our colors</p>
+        </div>
     </section>
 
-    <!-- About Us Content -->
-    <section class="about-us">
-        <div class="row">
-            <div class="about-col">
-                <h1>Color Your World with KS Coloring</h1>
-                <p>
-                    At KS Coloring, we bring your spaces to life with vibrant, high-quality paints. Whether you're revamping a room or transforming your entire home, our expert team and premium products ensure a flawless finish. Let's add color to your world!
-                </p>
-                <a href="" class="hero-btn">EXPLORE NOW</a>
+    <!-- About Intro Section -->
+    <section class="about-intro" data-aos="fade">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Welcome to KS Coloring</h2>
+                <p>Where colors come to life and spaces tell stories</p>
             </div>
-            <div class="about-col">
-                <img src="image/About Us.jpg" alt="About KS Coloring">
+            <div class="intro-image">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Colorful Home">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Features -->
+    <section class="about-features">
+        <div class="feature" data-aos="fade-up">
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Quality Paints">
+            </div>
+            <div class="feature-content">
+                <h3>Premium Quality</h3>
+                <p>Our paints are formulated with the finest ingredients for vibrant, long-lasting colors that transform any space.</p>
             </div>
         </div>
 
-        <div class="row">
-            <div class="about-col">
-                <h1>The Art of Perfect Painting</h1>
-                <p>
-                    Painting is more than just changing colors—it's about creating a space that feels uniquely yours. At KS Coloring, we combine artistry and expertise to help you find the perfect shades for your home. Just like the careful hand of a painter bringing a vision to life, we guide you through every step—from exploring endless color possibilities to achieving flawless, long-lasting results. Your dream home starts with the right colors, and we're here to make that journey joyful, simple, and inspiring.
-                </p>
-                <a href="" class="hero-btn">EXPLORE NOW</a>
+        <div class="feature" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-content">
+                <h3>Expert Team</h3>
+                <p>With over 15 years of experience, our color specialists help you find the perfect shades for your home.</p>
             </div>
-            <div class="about-col">
-                <img src="image/about us 3.jpg" alt="Painting Process">
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Expert Team">
+            </div>
+        </div>
+
+        <div class="feature" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Eco Friendly">
+            </div>
+            <div class="feature-content">
+                <h3>Eco-Friendly</h3>
+                <p>We're committed to sustainable practices with low-VOC formulas that are safe for your family and the environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2 data-aos="fade">Meet Our Team</h2>
+        <div class="team-members">
+            <div class="member" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Team Member">
+                <h4>Sarah Johnson</h4>
+                <p>Lead Color Designer</p>
+            </div>
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Team Member">
+                <h4>Michael Chen</h4>
+                <p>Product Specialist</p>
+            </div>
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Team Member">
+                <h4>Emily Rodriguez</h4>
+                <p>Customer Experience</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <section class="footer">
-        <div>
-            <h4>About Us</h4>
-            <p>
+        <div class="footer-content">
+            <h4 data-aos="fade-up">About Us</h4>
+            <p data-aos="fade-up" data-aos-delay="100">
                 At KS Coloring, we bring creativity to life with inspiring designs and vibrant colors.<br>
                 Our mission is to make every space beautiful with quality paints and personalized solutions.<br>
                 Transform your home with KS Coloring – where colors tell your story.
             </p>
-            <div class="icons">
+            <div class="icons" data-aos="fade-up" data-aos-delay="200">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <p>Made with <i class="fas fa-heart"></i> by Colors Edition</p>
+            <p data-aos="fade-up" data-aos-delay="300">Made with <i class="fas fa-heart"></i> by Colors Edition</p>
         </div>
     </section>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
         var navLinks = document.getElementById("navLinks");
         var nav = document.querySelector('nav');
 
