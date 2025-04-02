@@ -1,785 +1,379 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KS Coloring</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
-<style>
-    /* Global reset */
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
-}
-
-/* Body and background */
-body {
-    background-color: #f4f4f9;
-}
-
-/* Header Section */
-.header {
-    min-height: 100vh;
-    width: 100%;
-    background-image: url('image/background 1.jpg');
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    transition: all 0.5s ease-in-out;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 1% 1%;
-    align-items: center;
-    position: relative;
-}
-
-nav img {
-    width: 100px;
-}
-
-.nav-links {
-    flex: 1;
-    text-align: right;
-}
-
-.nav-links ul li {
-    list-style: none;
-    display: inline-block;
-    padding: 8px 15px;
-    position: relative;
-    transition: transform 0.3s ease-in-out;
-}
-
-.nav-links ul li a {
-    color: #333;
-    text-decoration: none;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-.nav-links ul li::after {
-    content: '';
-    width: 0%;
-    height: 2px;
-    background: #6a5acd;
-    display: block;
-    margin: auto;
-    transition: 0.3s;
-}
-
-.nav-links ul li:hover::after {
-    width: 100%;
-}
-
-.nav-links ul li:hover {
-    transform: translateY(-5px);
-}
-
-.text-box {
-    width: 80%;
-    color: #ffffff;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    animation: fadeIn 1s ease-out;
-    box-shadow:  #6a5acd;
-}
-
-.text-box h1 {
-    font-size: 70px;
-    font-weight: 600;
-    color: #fff;
-}
-
-.text-box p {
-    margin: 10px 0 40px;
-    font-size: 16px;
-    color: #ffffff;
-    font-weight: 300;
-}
-
-.hero-btn {
-    display: inline-block;
-    text-decoration: none;
-    color: #180138;
-    border: 2px solid #6a5acd;
-    padding: 12px 30px;
-    font-size: 14px;
-    background-color: transparent;
-    position: relative;
-    cursor: pointer;
-    border-radius: 30px;
-    transition: background 0.4s ease, color 0.4s ease;
-}
-
-.hero-btn:hover {
-    background-color: #6a5acd;
-    color: #fff;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Navigation Mobile */
-nav .fa {
-    display: none;
-}
-
-@media (max-width: 700px) {
-    .text-box h1 {
-        font-size: 25px;
-    }
-
-    .nav-links ul {
-        display: none;
-    }
-
-    .nav-links {
-        position: absolute;
-        background: rgba(0, 0, 0, 0.9);
-        height: 100vh;
-        width: 100%;
-        top: 0;
-        right: -100%;
-        text-align: left;
-        z-index: 2;
-        transition: right 0.3s ease-in-out;
-    }
-
-    nav .fa {
-        display: block;
-        color: #fff;
-        margin: 10px;
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    .nav-links ul {
-        padding: 50px 0;
-    }
-
-    .nav-links ul li {
-        display: block;
-        padding: 10px 20px;
-    }
-
-    .nav-links.active {
-        right: 0;
-    }
-}
-
-/* Satisfaction Section */
-.Satisfaction {
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    padding-top: 100px;
-    animation: slideUp 1s ease-out;
-    box-shadow:  #6a5acd;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.Satisfaction h1 {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.Satisfaction p {
-    color: #555;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 24px;
-    padding: 10px;
-}
-
-.row {
-    margin-top: 5%;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.Satisfaction-col {
-    flex-basis: 31%;
-    background: #f9f9f9;
-    border-radius: 12px;
-    margin-bottom: 5%;
-    padding: 20px;
-    box-sizing: border-box;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-}
-
-.Satisfaction-col:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
-}
-
-.Satisfaction-col h3 {
-    text-align: center;
-    font-weight: 600;
-    margin-top: 20px;
-}
-
-/* Color Collection */
-.color {
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    padding-top: 50px;
-    
-}
-
-.color-col {
-    flex-basis: 32%;
-    border-radius: 10px;
-    margin: 30px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-}
-
-.color-col img {
-    width: 100%;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.color-col:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.layer {
-    background: transparent;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: background 0.4s ease;
-}
-
-.layer:hover {
-    background: rgba(186, 151, 181, 0.7);
-}
-
-.layer h3 {
-    width: 100%;
-    font-weight: 500;
-    color: #ffffff;
-    font-size: 26px;
-    bottom: 0;
-    left: 0%;
-    transform: translateY(-50%);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.layer:hover h3 {
-    bottom: 35%;
-    opacity: 1;
-}
-
-/* Footer */
-.footer {
-    width: 100%;
-    text-align: center;
-    padding: 40px 0;
-    background-color: #2e3b4e;
-    color: #fff;
-}
-
-.footer h4 {
-    margin-bottom: 25px;
-    margin-top: 20px;
-    font-weight: 600;
-}
-
-.icons .fa {
-    color: #f44336;
-    margin: 0 15px;
-    cursor: pointer;
-    padding: 18px 0;
-    transition: transform 0.3s ease-in-out;
-}
-
-.icons .fa:hover {
-    transform: scale(1.1);
-}
-
-.fa-heart-o {
-    color: #f44336;
-}
-
-/* Call to Action */
-.cta {
-    margin: 100px auto;
-    width: 80%;
-    background-image: url('image/Contact us 2.jpg');
-    background-position: center;
-    background-size: cover;
-    border-radius: 10px;
-    text-align: center;
-    padding: 100px 0;
-    color: #fff;
-    animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.cta h1 {
-    color: #010d49;
-    margin-bottom: 40px;
-    padding: 0;
-}
-
-/* Testimonial */
-/* Testimonials Section */
-.testimonials {
-    width: 80%;
-    margin: auto;
-    padding-top: 100px;
-    text-align: center;
-    background-color: #f7f7f7;
-}
-
-.testimonials h1 {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 40px;
-    color: #4a4a4a;
-}
-
-.testimonials-col {
-    flex-basis: 44%;
-    border-radius: 10px;
-    margin-bottom: 5%;
-    text-align: left;
-    background-color: #fff;
-    padding: 25px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.testimonials-col img {
-    height: 60px;
-    margin-right: 20px;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in-out;
-}
-
-.testimonials-col:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.testimonials-col h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-}
-
-.testimonials-col p {
-    font-size: 14px;
-    color: #757575;
-    line-height: 1.6;
-    margin-top: 10px;
-}
-
-.testimonials-col .fa {
-    color: #f44336;
-    font-size: 20px;
-    margin-left: auto;
-    margin-top: 10px;
-}
-
-/* Mobile adjustments */
-@media (max-width: 700px) {
-    .testimonials-col {
-        flex-basis: 100%;
-        margin-bottom: 20px;
-    }
-
-    .testimonials h1 {
-        font-size: 28px;
-    }
-
-    .testimonials-col img {
-        height: 50px;
-        margin-right: 10px;
-    }
-}
-
-
-
-/* Add more animations and modern effects as needed */
-/* Our Facilities Section */
-.Facalities {
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    padding: 100px 0;
-    background-color: #f9f9f9;
-    animation: fadeIn 1s ease-out;
-}
-
-.Facalities h1 {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 30px;
-    color: #333;
-}
-
-.Facalities-col {
-    flex-basis: 31%;
-    border-radius: 10px;
-    margin-bottom: 5%;
-    text-align: left;
-    background-color: #fff;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-}
-
-.Facalities-col img {
-    width: 100%;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.Facalities-col:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.Facalities-col h3 {
-    margin-top: 15px;
-    color: #6a5acd;
-    font-weight: 600;
-}
-
-.Facalities-col p {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.5;
-    margin-top: 10px;
-}
-
-/* Mobile adjustments */
-@media (max-width: 700px) {
-    .Facalities-col {
-        flex-basis: 100%;
-        margin-bottom: 20px;
-    }
-
-    .Facalities h1 {
-        font-size: 30px;
-    }
-
-    .Facalities-col img {
-        height: 200px;
-        object-fit: cover;
-    }
-}
-
-/* Animation for fading in */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-</style>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Custom CSS */
+        .header {
+            min-height: 100vh;
+            width: 100%;
+            background-image: linear-gradient(rgba(106, 89, 205, 0.7), rgba(106, 89, 205, 0.7)),
+                              url('https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg');
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            box-shadow: #6a5acd;
+        }
+
+        .nav-links ul li::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: #6a5acd;
+            display: block;
+            margin: auto;
+            transition: 0.3s;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+        /* Color Collection Hover Effects */
+        .color-col {
+            transition: all 0.3s ease;
+        }
+        .color-col:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);
+        }
+
+        /* Testimonial Cards */
+        .testimonials-col {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);
+        }
+        .testimonials-col:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);
+        }
+
+       
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
-       <section class="header">
-        <nav>
+    <!-- Header Section -->
+    <section class="header" data-aos="fade" data-aos-duration="1000">
+        <nav class="flex justify-between items-center p-4 bg-white bg-opacity-90">
             <div class="nav-left">
-                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> LOGIN</a>
-                
+                <a href="login.html" class="text-purple-600 hover:text-purple-800 transition">
+                    <i class="fas fa-user mr-1"></i> LOGIN
+                </a>
             </div>
-            <a href="index.html"><img src=""></a>
-            <div class="nav-links" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="login.html">LOGIN</a></li>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="product.html">PRODUCT</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
+            <a href="index.html" class="text-2xl font-bold text-purple-600">KS Coloring</a>
+            <div class="nav-links hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="login.html" class="text-gray-700 hover:text-purple-600 transition">LOGIN</a></li>
+                    <li><a href="index.html" class="text-purple-600 font-medium">HOME</a></li>
+                    <li><a href="product.html" class="text-gray-700 hover:text-purple-600 transition">PRODUCT</a></li>
+                    <li><a href="about.html" class="text-gray-700 hover:text-purple-600 transition">ABOUT</a></li>
+                    <li><a href="contact.html" class="text-gray-700 hover:text-purple-600 transition">CONTACT</a></li>
                 </ul>
             </div>
-            <i class="fa fa-bars" onclick="showMenu()"></i>
+            <button class="md:hidden text-purple-600 text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
 
-
-        <div class="text-box">
-            <h1>Your Dream Colors Await  You!</h1>
-            <p>Transform your home with vibrant colors using advanced AI visualization tools and a wide selection of premium paints!</p>
-            <a href="product.html"class="hero-btn" onclick="getColorPalette()">Get Started</a>
+        <div class="text-box absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Your Dream Colors Await You!</h1>
+            <p class="text-lg mb-8 font-bold mb-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" style="font-size: 20px;" >Transform your home with vibrant colors using advanced AI visualization tools and a wide selection of premium paints!</p>
+            <a href="product.html" class="hero-btn bg-white text-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 px-8 py-3 rounded-full font-medium inline-block" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                Get Started
+            </a>
         </div>
+    </section>
 
-       </section>
+    <!-- Satisfaction Section -->
+    <section class="Satisfaction py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-4">100% Satisfaction</h1>
+            <p class="text-center text-gray-600 mb-2">Customer Rate</p>
+            <h2 class="text-3xl font-bold text-center mb-4">500+ Colors</h2>
+            <p class="text-center text-gray-600 mb-12">Quality Selection</p>
 
-<!-----Course---->
-
-<section class="Satisfaction">
-    <h1>100% Satisfaction </h1>
-    <p>Customer Rate</p>
-    <h2>500+ Colors</h2>
-    <p>Quality Selection</p>
-
-    <div class="row">
-        <div class="Satisfaction-col">
-            <h3>1.Transform Your Space with KS Coloring</h3>
-            <p>Discover premium-quality home paints that bring elegance, durability, and vibrant colors to your walls.</p>
+            <div class="row grid md:grid-cols-3 gap-8">
+                <div class="Satisfaction-col bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300"  style="box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);"data-aos="fade-up" data-aos-duration="600">
+                    <i class="fas fa-home text-purple-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">1. Transform Your Space with KS Coloring</h3>
+                    <p class="text-gray-600">Discover premium-quality home paints that bring elegance, durability, and vibrant colors to your walls.</p>
+                </div>
+                <div class="Satisfaction-col bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300" style="box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);">
+                    <i class="fas fa-robot text-purple-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">2. Unleash Creativity with AI-Powered Color Selection</h3>
+                    <p class="text-gray-600">Our advanced AI tools help you visualize and choose the perfect shades for your dream home effortlessly.</p>
+                </div>
+                <div class="Satisfaction-col bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300" style="box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);">
+                    <i class="fas fa-shipping-fast text-purple-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">3. Seamless Shopping & Hassle-Free Experience</h3>
+                    <p class="text-gray-600">From personalized recommendations to easy order tracking, KS Coloring ensures a smooth and delightful painting journey.</p>
+                </div>
+            </div>
         </div>
-        <div class="Satisfaction-col">
-            <h3>2.Unleash Creativity with AI-Powered Color Selection</h3>
-            <p>Our advanced AI tools help you visualize and choose the perfect shades for your dream home effortlessly.</p>
-        </div>
-        <div class="Satisfaction-col">
-            <h3>3.Seamless Shopping & Hassle-Free Experience</h3>
-            <p>From personalized recommendations to easy order tracking, KS Coloring ensures a smooth and delightful painting journey.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-------our color collection-->
-<section>
-    <section class="color">
-  <h1>Our Color Collection</h1>
-  <p>Bringing Colors to Life – Perfect Shades for Every Space!</p>
-  <div class="row">
-    <div class="color-col">
-        <img src="image/shade.jpg">
-        <div class="layer">
-            <h3>SHADES</h3>
-       </div>
-    </div>
-    <div class="color-col">
-        <img src="image/paints.jpg">
-        <div class="layer">
-            <h3>PAINTS</h3>
-       </div>
-    </div>
-    <div class="color-col">
-        <img src="image/brushes.jpg">
-        <div class="layer">
-            <h3>BRUSHES</h3>
-       </div>
-    </div>
+    <!-- Color Collection -->
+    <section class="color-section">
+        <div class="section-container">
+            <h1>Our Color Collection</h1>
+            <p class="section-description">Bringing Colors to Life – Perfect Shades for Every Space!</p>
+            
+            <div class="color-grid">
+                <div class="color-card" data-aos="zoom-in" data-aos-duration="600" data-aos-easing="ease-out-cubic">
+                    <img src="https://images.pexels.com/photos/628281/pexels-photo-628281.jpeg" alt="Wall Paint Colors">
+                    <div class="color-overlay">
+                        <h3>SHADES</h3>
+                    </div>
+                </div>
+                <div class="color-card" data-aos="zoom-in" data-aos-duration="600" data-aos-easing="ease-out-cubic">
+                    <img src="https://images.pexels.com/photos/1571462/pexels-photo-1571462.jpeg" alt="Paint Swatches">
+                    <div class="color-overlay">
+                        <h3>PAINTS</h3>
+                    </div>
+                </div>
+                <div class="color-card" data-aos="zoom-in" data-aos-duration="600" data-aos-easing="ease-out-cubic">
+                    <img src="https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg" alt="Paint Application">
+                    <div class="color-overlay">
+                        <h3>BRUSHES</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  </div>
+    <style>
+        /* Color Section Styles */
+        .color-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .color-section h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .section-description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .color-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(106, 89, 205, 0.7);
+            transition: transform 0.3s ease;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .color-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .color-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(106, 89, 205, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        
+        .color-card:hover .color-overlay {
+            background: rgba(106, 89, 205, 0.7);
+        }
+        
+        .color-overlay h3 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .color-card:hover .color-overlay h3 {
+            opacity: 1;
+        }
+    </style>
+
+    <!-- Facilities Section -->
+    <section class="Facalities py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-4">Our Facilities</h1>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+                At KS Coloring, we believe every home has a story, and the right colors bring it to life. Explore a stunning range of high-quality paints designed to transform your space with elegance and vibrancy.
+            </p>
+
+            <div class="row grid md:grid-cols-3 gap-8">
+                <div class="Facalities-col bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300" data-aos="flip-up" data-aos-duration="600">
+                    <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg" alt="Color Consultation" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <i class="fas fa-palette text-purple-600 text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">Color Consultation</h3>
+                    <p class="text-gray-600">Expert advice on choosing the perfect color schemes.</p>
+                </div>
+                <div class="Facalities-col bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg" alt="On-Site Assistant" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <i class="fas fa-user-tie text-purple-600 text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">On-Site Assistant</h3>
+                    <p class="text-gray-600">Expert visits for color selection and application guidance.</p>
+                </div>
+                <div class="Facalities-col bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg" alt="Paint Packages" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <i class="fas fa-box-open text-purple-600 text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">Paint Packages</h3>
+                    <p class="text-gray-600">Bundled services for complete home transformations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials py-20">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-4">Hear from Our Happy Customers!</h1>
+            <p class="text-center text-gray-600 mb-12">Join our community of satisfied customers who transformed their spaces with KS Coloring expertise.</p>
+            
+            <div class="testimonials-slider">
+                <div class="testimonials-col bg-white p-6 rounded-lg border border-gray-200 flex items-start" data-aos="fade-up" data-aos-duration="600">
+                    <img src="https://images.pexels.com/photos/3768257/pexels-photo-3768257.jpeg" alt="Customer" class="w-16 h-16 rounded-full object-cover mr-4">
+                    <div>
+                        <p class="text-gray-600 mb-3">Loved the entire experience! The website is super user-friendly, and the color preview feature helped me visualize my home perfectly.</p>
+                        <h3 class="font-semibold">Vihaan Sharma</h3>
+                        <div class="flex mt-2">
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star-half-alt text-yellow-500"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-col bg-white p-6 rounded-lg border border-gray-200 flex items-start">
+                    <img src="https://images.pexels.com/photos/3768257/pexels-photo-3768257.jpeg" alt="Customer" class="w-16 h-16 rounded-full object-cover mr-4">
+                    <div>
+                        <p class="text-gray-600 mb-3">I struggled to pick the right colors, but KS Coloring's interactive tools made it so easy. My bedroom looks stunning now!</p>
+                        <h3 class="font-semibold">Sanya Kapoor</h3>
+                        <div class="flex mt-2">
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta py-32 bg-cover bg-center" style="background-image: linear-gradient(rgba(106, 89, 205, 0.7), rgba(106, 89, 205, 0.7)), url('https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg')">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold text-white mb-8">For any Query <br> Anywhere From The India</h1>
+            <a href="contact.html" class="hero-btn bg-white text-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 px-8 py-3 rounded-full font-medium inline-block">
+                CONTACT US
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="footer py-12 bg-gradient-to-r from-purple-600 to-purple-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="text-2xl font-bold mb-6">About Us</h4>
+            <p class="max-w-2xl mx-auto mb-8">
+                At KS Coloring, we bring creativity to life with inspiring designs and vibrant colors. Our mission is to make every space beautiful with quality paints and personalized solutions. Transform your home with KS Coloring – where colors tell your story.
+            </p>
+            <div class="icons flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-white hover:text-gray-200 text-2xl transition"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white hover:text-gray-200 text-2xl transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-gray-200 text-2xl transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white hover:text-gray-200 text-2xl transition"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>Made with <i class="fas fa-heart text-red-400"></i> by Colors Edition</p>
+        </div>
+    </section>
+
   
 
-</section>
-
-<!-----Facalities---->
-
-<section class="Facalities">
-    <h1>Our Facalities</h1>
-    <p>At KS Coloring, we believe every home has a story, and the right colors bring it to life. Explore a stunning range of high-quality paints designed to transform your space with elegance and vibrancy. From rich textures to timeless shades, we make choosing, ordering, and receiving your perfect paint effortless. Let’s turn your vision into reality—one brushstroke at a time!</p>
-
-    <div class="row">
-        <div class="Facalities-col">
-            <img src="image/color consultation 2.jpg" >
-            <h3>Color Consultation</h3>
-            <p>Expert advice on choosing the perfect color schemes.</p>
-        </div>
-        <div class="Facalities-col">
-            <img src="image/on-site assistant 2.jpg" >
-            <h3>On-Site Assistant</h3>
-            <p>Expert visits for color selection and application guidance.</p>
-        </div>
-        <div class="Facalities-col">
-            <img src="image/paint man 2.jpg" >
-            <h3>Paint Packages</h3>
-            <p>Bundled services for complete home transformations.</p>
-        </div>
-    </div>
-</section>
-
-
-<!------testimonials----->
-
-<section class="testimonials">
-    <h1>Hear from Our Happy Customers!</h1>
-    <p>Join our community of satisfied customers who transformed their spaces with KS Coloring expertise.</p>
-    <div class="row">
-        <div class="testimonials-col">
-            <img src="image/customer 1.jpg">
-            <div>
-                <p>Loved the entire experience! The website is super user-friendly, and the color preview feature helped me visualize my home perfectly.</p>
-                <h3>Vihaan Sharma</h3>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-        </div>
-        <div class="testimonials-col">
-            <img src="image/customer 2.jpg">
-            <div>
-                <p>I struggled to pick the right colors, but KS Coloring's interactive tools made it so easy. My bedroom looks stunning now!</p>
-                <h3>Sanya Kapoor</h3>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-            </div>
-        </div>
-        
-    </div>
-</section>
-
-<!--------call to Action-------->
-<section class="cta">
-    <h1>For any Querry <br> Anywhere From The India</h1>
-    <a href="contact.html" class="hero-btn">CONTACT US</a>
-</section>
-
-<!--------Footer--------->
-<section class="footer">
-    <h4>About Us</h4>
-    <p>At KS Coloring, we bring creativity to life with inspiring designs and vibrant colors.<br>Our mission is to make every space beautiful with quality paints and personalized solutions.<br>Transform your home with KS Coloring – where colors tell your story.</p>
-    <div class="icons">
-        <i class="fa fa-facebook"></i>
-        <i class="fa fa-twitter"></i>
-        <i class="fa fa-instagram"></i>
-        <i class="fa fa-linkedin"></i>
-    </div>
-    <p>Made with <i class="fa fa-heart-o"></i> by Colors Edition</p>
-</section>
-
-<!-- API Integration Script -->
-<script>
-    // Adobe Color API Integration
-    async function getColorPalette() {
-        // Show loading state
-        const btn = document.querySelector('.hero-btn');
-        btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Generating...';
-        
-        try {
-            // 1. Get colors from API (mock - replace with real API call)
-            const mockColors = [
-                { name: "Red", hex: "#FF6B6B" },
-                { name: "Aqua Bliss", hex: "#4ECDC4" },
-                { name: "Blue", hex: "#45B7D1" },
-                { name: "Golden Hour", hex: "#FFD166" }
-            ];
-            
-            
-            // 2. Display colors
-            displayColorPalette(mockColors);
-            
-        } catch (error) {
-            console.error("API Error:", error);
-            alert("Our color generator is busy painting! Try again later.");
-        } finally {
-            btn.textContent = "Get Started";
-        }
-    }
-
-    function displayColorPalette(colors) {
-        // Create palette container
-        const palette = document.createElement('div');
-        palette.className = 'color-palette';
-        
-        // Add color boxes
-        colors.forEach(color => {
-            palette.innerHTML += `
-                <div class="color-box" style="background: ${color.hex};">
-                    <span class="color-name">${color.name}</span>
-                </div>
-            `;
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: false,
+            mirror: true
         });
+
+        // Initialize Slick Carousel
+        $(document).ready(function(){
+            $('.testimonials-slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                responsive: [{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }]
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.fa-bars').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('hidden');
+        });
+
         
-        // Add to hero section
-        const hero = document.querySelector('.text-box');
-        hero.appendChild(palette);
-    }
-
-</script>
-
-<!--------javaScript for toggle Menu-------->
-   <script>
-
-       var navLinks = document.getElementById("navLinks");
-
-       function showMenu(){
-          navLinks.style.right = "0";
-       }
-       function hideMenu(){
-          navLinks.style.right = "-200px"
-       }
-
-   </script> 
-
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
